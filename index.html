@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Prediction</title>
+</head>
+<body>
+    <h1>Car Price Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="car_ID">Car ID:</label><br>
+        <input type="number" id="car_ID" name="car_ID" required><br><br>
+        
+        <label for="fueltype">Fuel Type:</label><br>
+        <select id="fueltype" name="fueltype" required>
+            <option value="gas">Gas</option>
+            <option value="diesel">Diesel</option>
+        </select><br><br>
+        
+        <label for="aspiration">Aspiration:</label><br>
+        <select id="aspiration" name="aspiration" required>
+            <option value="std">Standard</option>
+            <option value="turbo">Turbo</option>
+        </select><br><br>
+        
+        <label for="doornumber">Number of Doors:</label><br>
+        <select id="doornumber" name="doornumber" required>
+            <option value="2">2</option>
+            <option value="4">4</option>
+        </select><br><br>
+        
+        <label for="drivewheel">Drive Wheel:</label><br>
+        <select id="drivewheel" name="drivewheel" required>
+            <option value="rwd">Rear Wheel Drive (RWD)</option>
+            <option value="fwd">Front Wheel Drive (FWD)</option>
+            <option value="4wd">Four Wheel Drive (4WD)</option>
+        </select><br><br>
+        
+        <label for="cylindernumber">Cylinder Number:</label><br>
+        <input type="number" id="cylindernumber" name="cylindernumber" required><br><br>
+        
+        <label for="horsepower">Horsepower:</label><br>
+        <input type="number" id="horsepower" name="horsepower" required><br><br>
+        
+        <label for="citympg">City MPG:</label><br>
+        <input type="number" id="citympg" name="citympg" required><br><br>
+        
+        <label for="highwaympg">Highway MPG:</label><br>
+        <input type="number" id="highwaympg" name="highwaympg" required><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if prediction %}
+        <h2>Prediction Result:</h2>
+        <p>Predicted Value: {{ prediction }}</p>
+    {% endif %}
+    
+    {% if prediction == "Error: Please enter valid numeric values for all fields." %}
+        <p style="color: red;">{{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
